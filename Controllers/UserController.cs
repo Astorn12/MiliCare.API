@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -37,6 +38,19 @@ namespace MiliCare.Controllers
             await _context.SaveChangesAsync();
             return Ok(200);
         }
+
+        [HttpPost("addmeasurement")]
+        public async Task<IActionResult> AddUserSensorMeasurment(SensorMeasurmenToAddDto mea){
+            var v= _mapper.Map<SensorMeasurment>(mea);
+            v.Date=DateTime.Now;
+            return Ok(await _context.AddAsync(v));
+        }
+
+        
+
+
+
+    
 
 
     }

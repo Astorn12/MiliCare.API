@@ -10,8 +10,7 @@ namespace MiliCare.Helpers
 
          public AutoMapperProfiles(){
             CreateMap<UserForRegisterDto,User>();
-           
-            
+            CreateMap<SensorMeasurmenToAddDto,SensorMeasurment>();
         }
     }
 }
