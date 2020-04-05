@@ -43,6 +43,8 @@ namespace MiliCare.Controllers
         public async Task<IActionResult> AddUserSensorMeasurment(SensorMeasurmenToAddDto mea){
             var v= _mapper.Map<SensorMeasurment>(mea);
             v.Date=DateTime.Now;
+            await _context.AddAsync(v);
+            await  _context.SaveChangesAsync();
             return Ok(await _context.AddAsync(v));
         }
 
