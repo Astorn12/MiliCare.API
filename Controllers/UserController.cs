@@ -46,7 +46,7 @@ namespace MiliCare.Controllers
             v.Date=DateTime.Now;
             await _context.AddAsync(v);
             await  _context.SaveChangesAsync();
-            return Ok(await _context.AddAsync(v));
+            return Ok(200);
         }
 
          [HttpGet("{name}/{surname}")]
