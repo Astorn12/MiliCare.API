@@ -49,6 +49,12 @@ namespace MiliCare.Controllers
             return Ok(await _context.AddAsync(v));
         }
 
+         [HttpGet("{name}/{surname}")]
+        public async Task<IActionResult> GetUserId(string name, string surname){
+            
+            var user=await _context.Users.FirstOrDefaultAsync(x=>x.Name==name & x.Surname==surname);
+            return Ok(user.Id);
+        }
         [HttpGet("test")]
         public async Task<IActionResult> Test(){
             return Ok( new List<User>{
