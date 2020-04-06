@@ -35,6 +35,7 @@ namespace MiliCare.Controllers
 
         [HttpGet("userHistory/{userId}/{sensorId}")]
         public async Task<IActionResult> GetUserHistory(int userId, int sensorId){
+            
             return Ok(await _context.SensorMeasurments.Where(x=>x.UserId==userId & x.SensorId==sensorId).Take(10).ToListAsync());
         }
     }

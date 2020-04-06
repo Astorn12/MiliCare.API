@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -48,12 +49,20 @@ namespace MiliCare.Controllers
             return Ok(await _context.AddAsync(v));
         }
 
-        
-
-
-
-    
-
-
+        [HttpGet("test")]
+        public async Task<IActionResult> Test(){
+            return Ok( new List<User>{
+                new User(){
+                    Id=1,
+                    Name="Słoń",
+                    Surname="Trąbalski"
+                },
+                new User(){
+                    Id=2,
+                    Name="Kaczka",
+                    Surname="Dziwaczka"
+                }
+            });
+        }
     }
 }
