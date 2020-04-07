@@ -40,7 +40,7 @@ namespace MiliCare.Controllers
 
         [HttpGet("userHistory/{userId}/{sensorId}")]
         public async Task<IActionResult> GetUserHistory(int userId, int sensorId){
-            var measurnentList=await _context.SensorMeasurments.Where(x=>x.UserId==userId & x.SensorId==sensorId).Take(10).ToListAsync();
+            var measurnentList=await _context.SensorMeasurments.Where(x=>x.UserId==userId & x.SensorId==sensorId).OrderByDescending(x=>x.Date).Take(10).ToListAsync();
             var measurmentToReturnList=_mapper.Map<List<SensorMeasurment>,List<SensorMeasurmentToReturnDto>>(measurnentList);
             return Ok(measurmentToReturnList);
         }
